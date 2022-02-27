@@ -1,3 +1,11 @@
+html, body, #app {
+  height: 100vh;
+}
+
+.bg-gradient {
+  background-image: var(--bs-gradient);
+}
+
 .App {
   text-align: center;
 }

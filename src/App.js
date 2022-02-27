@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import React , { useState, useEffect } from 'react';
 import './App.css';
+import Home from './Home';
+import Results from './Results';
 
 function App() {
+  const [age, setAge] = useState(50);
+  const [cuisine, setCuisine] = useState('American');
+  const [gender, setGender] = useState('M');
+  const [temperature, setTemperature] = useState(50);
+  const [time, setTime] = useState('24');
+  const [weather, setWeather] = useState('Sunny');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+        <Routes>
+          <Route path='/results' element={<Results vals={{age, cuisine, gender, temperature, time, weather}}/>} />
+          <Route path='/' element={<Home vals={{age, cuisine, gender, temperature, time, weather}} set={{setAge, setCuisine, setGender, setTemperature, setTime, setWeather}}/>} />
+        </Routes>
+    </Router>
   );
 }
 
